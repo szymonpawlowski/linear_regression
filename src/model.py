@@ -1,7 +1,7 @@
 import numpy as np
 
 class LinearRegressionModel:
-    def __init__(self), learning_rate = 0.01, iterations = 1000):
+    def __init__(self, learning_rate = 0.01, iterations = 1000):
         self.learning_rate = learning_rate
         self.iterations = iterations
         self.weights = None
