@@ -2,27 +2,27 @@
 
 Implementacja regresji liniowej w Pythonie przy użyciu NumPy.
 
-## 📄 Opis
+## 📄 Description
 Ten projekt implementuje regresję liniową z gradientem prostym od podstaw, bez użycia bibliotek takich jak scikit-learn. Model jest uczony na losowo wygenerowanych danych.
 
-## 📦 Wymagania
+## 📦 Requirements
 Do uruchomienia projektu potrzebne są:
 - Python 3.x
 - NumPy
 - Matplotlib (jeśli bierze się pod uwagę wizualizację wyników)
 
-## 📥 Instalacja
+## 📥 Instalation
 Aby zainstalować wymagane biblioteki, użyj tego polecenia:
 ```bash
 pip install -r requirements.txt
 ```
-## ▶️ Uruchomienie
+## ▶️ Launch
 Aby uruchomić projekt, użyj tego polecenia:
 ```bash
 python main.py
 ```
 
-## 📁 Struktura katalogów
+## 📁 File structure
 ```bash
 linear_regression/
 |── src/
@@ -34,6 +34,6 @@ linear_regression/
 |── requirements.txt    # Lista wymaganych bibliotek
 ```
 
-## 👤 Autorstwo
+## 👤 Author
 - Szymon Pawłowski (szymonpawlowski)
 
