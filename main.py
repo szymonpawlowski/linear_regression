@@ -9,7 +9,7 @@ y = 3 * X + 5 + np.random.randn(100, 1)
 y = y.ravel()
 
 # MODEL
-model = LinearRegressionModel(learning_rate=0.01, iterations=1000)
+model = LinearRegressionModel(learning_rate = 0.01, epochs = 1000)
 model.fit(X, y)
 
 # PREDICTIONS
