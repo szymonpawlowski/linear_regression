@@ -27,12 +27,12 @@ python main.py
 ```bash
 linear_regression/
 |── src/
-|   |── __init__.py     # Plik inicjalizujący moduł
-|   |── model.py        # Plik implementacji modelu regresji liniowej
-|   |── utils.py        # Plik funkcji pomocniczych
-|── README.md           # Plik dokumentacji projektu
-|── main.py             # Główny plik uruchamiający model
-|── requirements.txt    # Lista wymaganych bibliotek
+|   |── __init__.py     # Module initialization file
+|   |── model.py        # Linear regression model file
+|   |── utils.py        # Utility functions file
+|── README.md           # Documentation file
+|── main.py             # Main launching file
+|── requirements.txt    # List of required libraries
 ```
 
 ## 👤 Author
