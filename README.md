@@ -30,6 +30,7 @@ linear_regression/
 |   |── __init__.py     # Module initialization file
 |   |── model.py        # Linear regression model file
 |   |── utils.py        # Utility functions file
+|── LICENSE.txt         # License file
 |── README.md           # Documentation file
 |── main.py             # Main launching file
 |── requirements.txt    # List of required libraries
