@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from src import LinearRegressionModel, mean_squared_error, plot_predictions
 
 # RANDOM DATA GENERATION
@@ -17,7 +16,7 @@ y_pred = model.predict(X)
 
 # MSE ERROR
 mse = mean_squared_error(y, y_pred)
-print(f"Błąd MSE: {mse:.4f}")
+print(f"MSE error: {mse:.4f}")
 
 # PLOT
 plot_predictions(X, y, y_pred)
