@@ -1,5 +1,4 @@
-# Linear Regression Model
-
+# 〰️ Linear Regression Model
 Implementation of linear regression in Python using NumPy.
 
 ## 📄 Description
