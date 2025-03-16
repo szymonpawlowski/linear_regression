@@ -8,7 +8,7 @@ This project  implements linear regression with simple gradient from the ground 
 In order for this project to work you'll need:
 - Python 3.x
 - NumPy
-- Matplotlib (if you intend to visualize your results)
+- Matplotlib
 
 ## 📥 Installation
 To install required libraries, use this command in your terminal:
