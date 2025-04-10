@@ -25,15 +25,17 @@ python main.py
 ## 📁 File structure
 ```bash
 linear_regression/
-|── src/
-|   |── __init__.py     # Module initialization file
-|   |── model.py        # Linear regression model file
-|   |── utils.py        # Utility functions file
-|── .gitignore          # List of ignored files
-|── LICENSE.txt         # License file
-|── README.md           # Project documentation file
-|── main.py             # Main launching file
-|── requirements.txt    # List of required libraries
+├── src/
+│   ├── __init__.py
+│   ├── main.py              # Main file
+│   ├── model.py             # Linear regression logistics
+│   ├── utils.py             # Utility functions
+│   └── io_handler.py        # User input
+│
+├── .gitignore
+├── README.md
+├── LICENSE
+└── requirements.txt
 ```
 
 ## 👤 Author
