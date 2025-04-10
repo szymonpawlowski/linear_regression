@@ -27,14 +27,14 @@ python main.py
 linear_regression/
 ├── src/
 │   ├── __init__.py
+│   ├── io_handler.py        # User input
 │   ├── main.py              # Main file
 │   ├── model.py             # Linear regression logistics
-│   ├── utils.py             # Utility functions
-│   └── io_handler.py        # User input
+│   └── utils.py             # Utility functions
 │
 ├── .gitignore
+├── LICENSE.txt
 ├── README.md
-├── LICENSE
 └── requirements.txt
 ```
 
