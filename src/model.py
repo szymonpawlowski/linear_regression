@@ -47,12 +47,14 @@ class AdvancedLinearRegression:
             db = (1 / n_samples) * np.sum(y_pred - y_true)
             self.weights -= self.learning_rate * dw
             self.bias -= self.learning_rate * db
+
     def predict(self, X):
         X = np.array(X)
         return np.dot(X, self.weights) + self.bias
 
     def mse(self, y_true, y_pred):
         return np.mean((np.array(y_pred) - np.array(y_true))**2)
+
 
 def get_model(X, learning_rate = 0.01, epochs = 1000):
     if isinstance(X[0], list) or isinstance(X[0], tuple):
