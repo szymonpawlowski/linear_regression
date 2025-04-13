@@ -23,9 +23,6 @@ class SimpleLinearRegression:
     def predict(self, X):
         return [self.weights * x + self.bias for x in X]
 
-    def mse(self, y_true, y_pred):
-        return sum((yt - yp)**2 for yt, yp in zip(y_true, y_pred)) / len(y)
-
 
 class AdvancedLinearRegression:
     def __init__(self, learning_rate = 0.01, epochs = 1000):
@@ -51,9 +48,6 @@ class AdvancedLinearRegression:
     def predict(self, X):
         X = np.array(X)
         return np.dot(X, self.weights) + self.bias
-
-    def mse(self, y_true, y_pred):
-        return np.mean((np.array(y_pred) - np.array(y_true))**2)
 
 
 def get_model(X, learning_rate = 0.01, epochs = 1000):
