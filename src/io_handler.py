@@ -1,49 +1,52 @@
 import random
-
-def custom_data_list(prompt):
-    # list of comma seperated values
-    while True:
-        try:
-            raw = input(prompt)
-            return [float(x.strip()) for x in raw.split(",")]
-        except ValueError:
-            print("⚠️ Error: Input comma seperated data!")
-
-def get_user_input():
-    print("===== Linear Regression Data Input =====")
-    mode = input("Custom data (C) or Random data (R)? [C/R]: ").upper().strip()
-
-    if mode == "C":
-        print("===== Custom Data Input =====")
-        X = custom_data_list("Set X values: ")
-        y = custom_data_list("Set y values: ")
-
-        if len(X) != len(y):
-            raise ValueError("⚠️ Error: X and y number of values must be the same!")
-
-    elif mode == "R":
-        print("===== Random Data Input =====")
-        count = int(input("How many data points to generate? ") or "30")
-        X_min = float(input("Minimum X value: ") or "0")
-        X_max = float(input("Maximum X value: ") or "10")
-        a = float(input("Slope a: ") or "2")
-        b = float(input("Bias b: ") or "4")
-        noise = float(input("Noise: ") or "1.0")
-
-        X = [random.uniform(X_min, X_max) for _ in range(count)]
-        y = [a * x + b + random.uniform(-noise, noise) for x in X]
+from utils import generate_random_data
 
 
+def choose_data_source():
+    print("\nChoose the source of data:")
+    print("1 - Manual input")
+    print("2 - Random input")
+    print("3 - Data from file input")
+    choice = input("Enter your choice (1/2/3): ") or "2"
+    return choice
+
+
+def get_manual_data():
     try:
-        learning_rate = float(input("Learning rate: "))
-    except ValueError:
-        raise ValueError("⚠️ Error: Incorrect learning rate! Setting default: 0.01")
-        learning_rate = 0.01
+        X = list(map(float, input("Set X values seperated with space: ").split()))
+        y_true = list(map(float, input("Set y values seperated with space: ").split()))
+    except ValueError("⚠️ Error: Invalid data!"):
+        return None, None
+    if len(X) != len(y_true):
+        raise ValueError("⚠️ Error: X and Y number of values must be the same!")
+        return None, None
+    return X, y_true
 
+
+def get_random_data():
     try:
-        epochs = int(input("Epochs: "))
-    except ValueError:
-        raise ValueError("⚠️ Error: Incorrect number of epochs! Setting default: 1000")
-        epochs = 1000
-
-    return X, y, learning_rate, epochs
+        n_samples = int(input("Set number of data points (default = 100): ") or "100")
+        dim = int(input("Set number of dimensions (default = 1): ") or "1")
+        x_min = float(input("Set minimum X value (default = 0): ") or "0")
+        x_max = float(input("Set maximum X value (default = 10): ") or "10")
+        w_min = float(input("Set minimum weight value (default = 1): ") or "1")
+        w_max = float(input("Set maximum weight value (default = 5): ") or "5")
+        b_min = float(input("Set minimum bias value (default = -2): ") or "-2")
+        b_max = float(input("Set maximum bias value (default = 2): ") or "2")
+        noise = float(input("Set noise level (default = 1.0): ") or "1.0")
+    except ValueError("⚠️ Error: Invalid data!"):
+        print("Setting default values.")
+        n_samples, dim = 100, 1
+        x_min, x_max = 0, 10
+        w_min, w_max = 1, 5
+        b_min, b_max = -2, 2
+        noise = 1.0
+        
+    return generate_random_data(
+        n_samples = n_samples,
+        dim = dim,
+        x_range = (x_min, x_max),
+        w_range = (w_min, w_max),
+        b_range = (b_min, b_max),
+        noise = noise
+    )
