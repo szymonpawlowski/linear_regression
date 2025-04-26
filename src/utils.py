@@ -39,3 +39,27 @@ def generate_random_data(
         noise = np.random.uniform(-noise, noise, size = n_samples)
         y_true = np.dot(X, weights_true) + bias_true + noise
         return X.tolist(), y_true.tolist()
+
+
+def load_data_file(filepath):
+    try:
+        with open(filepath, 'r') as file:
+            lines = file.readlines()
+
+        if len(lines) < 2:
+            raise ValueError("⚠️ Error: The file must contain at least 2 lines (X and Y values)!")
+
+        X = [float(x) for x in lines[0].replace(",", " ").split()]
+        y_true = [float(y) for y in lines[1].replace(",", " ").split()]
+
+        if len(X) != len(y_true):
+            raise ValueError("⚠️ Error: Number of X and Y values must be the same!")
+
+        return X, y_true
+    except FileNotFoundError:
+        print("⚠️ Error: File not found.")
+        return None, None
+
+    except Exception as e:
+        print(f"⚠️ Error: {e}")
+        return None, None
