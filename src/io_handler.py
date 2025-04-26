@@ -68,3 +68,14 @@ def get_random_data():
 def get_file_data():
     filepath = input("Enter file path: ").strip()
     return load_data_file(filepath)
+
+
+def get_learning_parameters():
+    try:
+        learning_rate = float(input("Set learning rate (default = 0.01): ") or "0.01")
+        epochs = int(input("Set number of epochs (default = 1000): ") or "1000")
+    except ValueError:
+        print("⚠️ Error: Invalid input. Using default values...")
+        learning_rate = 0.01
+        epochs = 1000
+    return learning_rate, epochs
