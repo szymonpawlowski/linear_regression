@@ -1,4 +1,3 @@
-import random
 from utils import generate_random_data
 
 
@@ -41,7 +40,7 @@ def get_random_data():
         w_min, w_max = 1, 5
         b_min, b_max = -2, 2
         noise = 1.0
-        
+
     return generate_random_data(
         n_samples = n_samples,
         dim = dim,
