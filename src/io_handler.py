@@ -3,11 +3,24 @@ from utils import generate_random_data
 
 def choose_data_source():
     print("\nChoose the source of data:")
-    print("1 - Manual input")
-    print("2 - Random input")
+    print("1 - Manual data input")
+    print("2 - Random data input")
     print("3 - Data from file input")
     choice = input("Enter your choice (1/2/3): ") or "2"
     return choice
+
+
+def get_data():
+    choice = choose_data_source()
+    if choice == "1":
+        return get_manual_data()
+    elif choice == "2":
+        return get_random_data()
+    elif choice == "3":
+        return get_file_data()
+    else:
+        print("⚠️ Error: Invalid input, generating random data...")
+        return get_random_data()
 
 
 def get_manual_data():
@@ -33,8 +46,9 @@ def get_random_data():
         b_min = float(input("Set minimum bias value (default = -2): ") or "-2")
         b_max = float(input("Set maximum bias value (default = 2): ") or "2")
         noise = float(input("Set noise level (default = 1.0): ") or "1.0")
-    except ValueError("⚠️ Error: Invalid data!"):
-        print("Setting default values.")
+    except ValueError:
+        print("⚠️ Error: Invalid data!")
+        print("Setting default values...")
         n_samples, dim = 100, 1
         x_min, x_max = 0, 10
         w_min, w_max = 1, 5
@@ -49,3 +63,8 @@ def get_random_data():
         b_range = (b_min, b_max),
         noise = noise
     )
+
+
+def get_file_data():
+    print("⚠️ Data from file not implemented yet!")
+    return None, None
