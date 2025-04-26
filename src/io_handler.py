@@ -1,4 +1,4 @@
-from utils import generate_random_data
+from utils import generate_random_data, load_data_file
 
 
 def choose_data_source():
@@ -66,5 +66,5 @@ def get_random_data():
 
 
 def get_file_data():
-    print("⚠️ Data from file not implemented yet!")
-    return None, None
+    filepath = input("Enter file path: ").strip()
+    return load_data_file(filepath)
