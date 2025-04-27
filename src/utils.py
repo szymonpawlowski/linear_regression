@@ -63,3 +63,22 @@ def load_data_file(filepath):
     except Exception as e:
         print(f"⚠️ Error: {e}")
         return None, None
+
+
+def plot_regression(X, y_true, epoch, y_pred):
+    plt.clf()
+
+    plt.scatter(X, y_true, color='blue', label='True values')
+
+    if isinstance(X[0], (list, tuple, np.ndarray)):
+        X_plot = np.array(X)[:, 0]
+    else:
+        X_plot = X
+
+    plt.plot(X_plot, y_pred, color='red', label='Predicted values')
+
+    plt.title(f"Epoch: {epoch}\nMSE = {mean_squared_error(y_true, y_pred):.4f}")
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.legend()
+    plt.pause(0.1)
