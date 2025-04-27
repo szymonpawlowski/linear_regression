@@ -1,6 +1,8 @@
 from io_handler import get_data, get_learning_parameters
 from model import get_model
-from utils import mean_squared_error
+from utils import mean_squared_error, plot_regression
+import matplotlib.pyplot as plt
+plt.ion()
 
 
 def main():
@@ -10,7 +12,11 @@ def main():
 
     model = get_model(X, learning_rate=learning_rate, epochs=epochs)
 
-    model.fit(X, y_true)
+    def on_epoch(epoch, model):
+        y_pred = model.predict(X)
+        plot_regression(X, y_true, epoch, y_pred)
+
+    model.fit(X, y_true, on_epoch=on_epoch)
     y_pred = model.predict(X)
     mse = mean_squared_error(y_true, y_pred)
 
