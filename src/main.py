@@ -17,6 +17,7 @@ def main():
         plot_regression(X, y_true, epoch, y_pred)
 
     model.fit(X, y_true, on_epoch=on_epoch)
+
     y_pred = model.predict(X)
     mse = mean_squared_error(y_true, y_pred)
 
