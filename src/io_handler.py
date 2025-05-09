@@ -1,4 +1,4 @@
-from utils import generate_random_data, load_data_file
+from utils import generate_random_data, load_data_file, validate_input
 
 
 def choose_data_source():
@@ -29,9 +29,10 @@ def get_manual_data():
         y_true = list(map(float, input("Set y values seperated with space: ").split()))
     except ValueError("⚠️ Error: Invalid data!"):
         return None, None
-    if len(X) != len(y_true):
-        raise ValueError("⚠️ Error: X and Y number of values must be the same!")
-        return None, None
+    validate_input(X, y_true)
+    #if len(X) != len(y_true):
+        #raise ValueError("⚠️ Error: X and Y number of values must be the same!")
+        #return None, None
     return X, y_true
 
 
