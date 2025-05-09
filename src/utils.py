@@ -67,6 +67,10 @@ def load_data_file(filepath):
 
 def plot_regression(X, y_true, epoch, y_pred):
     plt.clf()
+    plt.title(f"Epoch {epoch}")
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.grid(True)
 
     plt.scatter(X, y_true, color='blue', label='True values')
 
@@ -77,8 +81,9 @@ def plot_regression(X, y_true, epoch, y_pred):
 
     plt.plot(X_plot, y_pred, color='red', label='Predicted values')
 
-    plt.title(f"Epoch: {epoch}\nMSE = {mean_squared_error(y_true, y_pred):.4f}")
-    plt.xlabel('X')
-    plt.ylabel('Y')
+    epoch_mse = mean_squared_error(y_true, y_pred)
+
+    plt.text(0.05, 0.9, f"MSE = {epoch_mse:.4f}", transform=plt.gca().transAxes,
+             verticalalignment='top', fontsize=10)
     plt.legend()
     plt.pause(0.1)
