@@ -2,7 +2,7 @@
 Implementation of linear regression in Python using NumPy.
 
 ## 📄 Description
-This project  implements linear regression with simple gradient from the ground up, without using libraries such as scikit-learn. The model is learning on randomly generated data.
+This project  implements linear regression with simple gradient from the ground up, without using libraries such as scikit-learn. The model is learning on randomly generated data, user input data or file data.
 
 ## 📦 Requirements
 In order for this project to work you'll need:
