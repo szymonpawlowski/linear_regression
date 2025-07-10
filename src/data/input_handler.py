@@ -1,4 +1,4 @@
-from utils import generate_random_data, load_data_file, validate_input
+from src.model.utils import generate_random_data, load_data_file, validate_input
 
 
 def choose_data_source():
