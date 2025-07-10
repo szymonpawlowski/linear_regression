@@ -25,15 +25,29 @@ python main.py
 ## 📁 File structure
 ```bash
 linear_regression/
+│
 ├── src/
-│   ├── __init__.py
-│   ├── io_handler.py        # User input
-│   ├── main.py              # Main file
-│   ├── model.py             # Linear regression logistics
-│   └── utils.py             # Utility functions
+│   │
+│   ├── data/
+│   │   ├── input_handler.py
+│   │   └── validators.py
+│   │
+│   ├── gui/
+│   │   ├── buttons.py
+│   │   ├── callbacks
+│   │   └── gui.py
+│   │
+│   ├── model/
+│   │   ├── regression.py
+│   │   └── utils.py
+│   │
+│   └── test/
+│       ├── test_input_handler.py
+│       └── test_regression.py
 │
 ├── .gitignore
 ├── LICENSE.txt
+├── main.py 
 ├── README.md
 └── requirements.txt
 ```
