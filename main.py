@@ -1,6 +1,6 @@
-from io_handler import get_data, get_learning_parameters
-from model import get_model
-from utils import mean_squared_error, plot_regression
+from src.data.input_handler import get_data, get_learning_parameters
+from src.model.regression import get_model
+from src.model.utils import mean_squared_error, plot_regression
 import matplotlib.pyplot as plt
 plt.ion()
 
