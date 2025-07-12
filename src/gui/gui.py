@@ -8,12 +8,16 @@ class LinearRegressionApp:
         self.window.geometry("800x600")
         self.create_start_menu()
         self.window.mainloop()
-        
+
     def create_data_selection_menu(self):
         self.data_selection_frame = tk.Frame(self.window)
         self.data_selection_frame.pack()
         self.random_data_button = tk.Button(self.data_selection_frame, text = "RANDOM DATA")
-        self.random_data_button.pack(anchor = "n")
+        self.random_data_button.pack(padx = 3, side = tk.LEFT)
+        self.user_data_button = tk.Button(self.data_selection_frame, text = "USER DATA")
+        self.user_data_button.pack(padx = 3, side = tk.LEFT)
+        self.file_data_button = tk.Button(self.data_selection_frame, text = "FILE DATA")
+        self.file_data_button.pack(padx = 3, side = tk.LEFT)
 
     def start_app(self):
         # clearing window and creating mode selection
