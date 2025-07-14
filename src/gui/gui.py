@@ -1,4 +1,5 @@
 import tkinter as tk
+from src.config import font, title_font_size
 
 
 class LinearRegressionApp:
@@ -31,7 +32,7 @@ class LinearRegressionApp:
     def create_start_menu(self):
         self.main_frame = tk.Frame(self.window)
         self.main_frame.pack()
-        self.welcome_label = tk.Label(self.main_frame, text = "LINEAR REGRESSION", font = ("Consolas", 20, "bold"), justify = "center")
+        self.welcome_label = tk.Label(self.main_frame, text = "LINEAR REGRESSION", font = (font, title_font_size, "bold"), justify = "center")
         self.welcome_label.pack(anchor = "n")   # label alignment to center - north anchor
         self.start_button = tk.Button(self.main_frame, text = "START", command = self.start_app)
         self.start_button.pack(pady = 10, anchor = "n")
