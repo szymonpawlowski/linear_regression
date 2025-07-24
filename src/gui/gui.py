@@ -1,19 +1,13 @@
 import tkinter as tk
-import config
 
 
 class LinearRegressionApp:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Linear Regression")
-        self.window.geometry(str(config.WINDOW_WIDTH)+"x"+str(config.WINDOW_HEIGHT))
+        self.window.geometry("800x600")
         self.create_start_menu()
         self.window.mainloop()
-        
-    def return_start_menu(self):
-        self.data_selection_frame.destroy()
-        self.return_button.destroy()
-        self.create_start_menu()
 
     def create_data_selection_menu(self):
         self.data_selection_frame = tk.Frame(self.window)
@@ -24,13 +18,11 @@ class LinearRegressionApp:
         self.user_data_button.pack(padx = 3, side = tk.LEFT)
         self.file_data_button = tk.Button(self.data_selection_frame, text = "FILE DATA")
         self.file_data_button.pack(padx = 3, side = tk.LEFT)
-        self.return_button = tk.Button(self.data_selection_frame, text = "RETURN", command = self.return_start_menu)
-        self.return_button.pack(pady = 5)
 
     def start_app(self):
         # clearing window and creating mode selection
         for widget in self.start_menu_widgets:
-            widget.pack_forget()
+            widget.forget()
         self.create_data_selection_menu()
 
     def exit_app(self):

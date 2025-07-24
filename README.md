@@ -1,13 +1,15 @@
-# 〰️ Linear Regression Model
-Implementation of linear regression in Python using NumPy.
+# 〰️ Linear Regression Model App
+Implementation of linear regression in Python.
 
 ## 📄 Description
-This project  implements linear regression with simple gradient from the ground up, without using libraries such as scikit-learn. The model is learning on randomly generated data, user input data or file data.
+This project implements linear regression from the ground up. The model is learning on randomly generated data, user input data or data from file. Everything is set in a friendly GUI easy to use.
+PS. Currently as of July 2025 the project isn't finished.
 
 ## 📦 Requirements
 In order for this project to work you'll need:
 - Python 3.x
-- NumPy
+- Tkinter
+- Numpy
 - Matplotlib
 
 ## 📥 Installation
