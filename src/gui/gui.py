@@ -22,7 +22,7 @@ class LinearRegressionApp:
     def start_app(self):
         # clearing window and creating mode selection
         for widget in self.start_menu_widgets:
-            widget.forget()
+            widget.pack_forget()
         self.create_data_selection_menu()
 
     def exit_app(self):
