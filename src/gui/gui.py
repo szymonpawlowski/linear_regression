@@ -34,7 +34,7 @@ class LinearRegressionApp:
     def start_app(self):
         # clearing window and creating mode selection
         for widget in self.start_menu_widgets:
-            widget.pack_forget()
+            widget.grid_forget()
         self.create_data_selection_menu()
 
     def exit_app(self):
@@ -42,14 +42,15 @@ class LinearRegressionApp:
 
     def create_start_menu(self):
         self.main_frame = tk.Frame(self.window)
-        self.main_frame.pack()
+        self.main_frame.columnconfigure(0, weight=1)
         self.welcome_label = tk.Label(self.main_frame, text="LINEAR REGRESSION", font=("Consolas", 20, "bold"), justify="center")
-        self.welcome_label.pack(anchor="n")   # label alignment to center - north anchor
+        self.welcome_label.grid(row=0, column=0)
         self.start_button = tk.Button(self.main_frame, text="START", command=self.start_app)
-        self.start_button.pack(pady=10, anchor="n")
+        self.start_button.grid(row=1, column=0, padx=200, pady=10, sticky="we")
         self.exit_button = tk.Button(self.main_frame, text="EXIT", command=self.exit_app)
-        self.exit_button.pack(anchor="n")
+        self.exit_button.grid(row=2, column=0, padx=200, sticky="we")
         self.start_menu_widgets = [self.welcome_label, self.start_button, self.exit_button]
+        self.main_frame.pack(fill="x")
 
 
 app = LinearRegressionApp()
