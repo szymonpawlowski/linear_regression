@@ -53,11 +53,19 @@ class LinearRegressionApp:
                                       justify="center")
         self.welcome_label.grid(row=0, column=0, padx=10, pady=20)
 
-        self.start_button = tk.Button(self.main_frame, text="START", command=self.start_app)
-        self.start_button.grid(row=1, column=0)
+        self.start_button = tk.Button(self.main_frame,
+                                      text="START",
+                                      height=2,
+                                      font=("Consolas", 15),
+                                      command=self.start_app)
+        self.start_button.grid(row=1, column=0, sticky="we")
 
-        self.exit_button = tk.Button(self.main_frame, text="EXIT", command=self.exit_app)
-        self.exit_button.grid(row=2, column=0)
+        self.exit_button = tk.Button(self.main_frame,
+                                     text="EXIT",
+                                     height=2,
+                                     font=("Consolas", 15),
+                                     command=self.exit_app)
+        self.exit_button.grid(row=2, column=0, sticky="we")
 
         self.start_menu_widgets = [self.welcome_label, self.start_button, self.exit_button]
         self.main_frame.place(x=0, y=0, anchor="nw")
