@@ -10,6 +10,7 @@ class LinearRegressionApp:
         self.window.config(menu=self.menubar)
         self.create_data_menubar()
         self.create_options_menubar()
+        self.create_exit_menubar()
         self.window.mainloop()
 
     def return_start_menu(self):
@@ -93,6 +94,10 @@ class LinearRegressionApp:
                                  menu=self.options_menu,
                                  underline=0)
         
+    def create_exit_menubar(self):
+        self.exit_menu = tk.Menu(self.menubar)
+        self.menubar.add_cascade(label="Exit",
+                                 command=self.exit_app)
 
 
 app = LinearRegressionApp()
