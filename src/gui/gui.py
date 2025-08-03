@@ -5,7 +5,7 @@ class LinearRegressionApp:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Linear Regression")
-        self.window.geometry("1200x800")
+        self.window.geometry("1600x1000")
         self.create_start_menu()
         self.window.mainloop()
 
@@ -75,7 +75,8 @@ class LinearRegressionApp:
 
         self.empty_label = tk.Label(self.main_frame,
                                     relief="raised",
-                                    bd=5,)
+                                    bd=5,
+                                    height=10000)
         self.empty_label.grid(row=3, column=0, sticky="we")
 
         self.start_menu_widgets = [self.welcome_label, self.start_button, self.exit_button, self.empty_label]
