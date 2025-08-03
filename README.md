@@ -19,9 +19,9 @@ pip install -r requirements.txt
 ```
 
 ## ▶️ Launch
-To launch this project, use this command in your terminal:
+To launch current version of this project, use this command in your terminal:
 ```bash
-python main.py
+python src/gui/gui.py
 ```
 
 ## 📁 File structure
