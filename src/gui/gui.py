@@ -48,15 +48,19 @@ class LinearRegressionApp:
         self.main_frame.columnconfigure(0, weight=1)
 
         self.welcome_label = tk.Label(self.main_frame,
-                                      text="LINEAR\nREGRESSION",
+                                      text="LINEAR\n REGRESSION ",
                                       font=("Consolas", 20, "bold"),
-                                      justify="center")
-        self.welcome_label.grid(row=0, column=0, padx=10, pady=20)
+                                      justify="center",
+                                      relief="raised",
+                                      bd=5)
+        self.welcome_label.grid(row=0, column=0, sticky="we")
 
         self.start_button = tk.Button(self.main_frame,
                                       text="START",
                                       height=2,
                                       font=("Consolas", 15),
+                                      relief="raised",
+                                      bd=5,
                                       command=self.start_app)
         self.start_button.grid(row=1, column=0, sticky="we")
 
@@ -64,10 +68,17 @@ class LinearRegressionApp:
                                      text="EXIT",
                                      height=2,
                                      font=("Consolas", 15),
+                                     relief="raised",
+                                     bd=5,
                                      command=self.exit_app)
         self.exit_button.grid(row=2, column=0, sticky="we")
 
-        self.start_menu_widgets = [self.welcome_label, self.start_button, self.exit_button]
+        self.empty_label = tk.Label(self.main_frame,
+                                    relief="raised",
+                                    bd=5,)
+        self.empty_label.grid(row=3, column=0, sticky="we")
+
+        self.start_menu_widgets = [self.welcome_label, self.start_button, self.exit_button, self.empty_label]
         self.main_frame.place(x=0, y=0, anchor="nw")
 
 
