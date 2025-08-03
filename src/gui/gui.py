@@ -13,29 +13,6 @@ class LinearRegressionApp:
         self.create_exit_menubar()
         self.window.mainloop()
 
-    def return_start_menu(self):
-        self.random_data_button.destroy()
-        self.user_data_button.destroy()
-        self.return_start_menu_button.destroy()
-        self.create_start_menu()
-
-    def create_data_selection_menu(self):
-        self.random_data_button = tk.Button(self.sidebar, text="RANDOM DATA")
-        self.random_data_button.grid(row=1, column=1, padx=5)
-
-        self.user_data_button = tk.Button(self.sidebar, text="USER DATA")
-        self.user_data_button.grid(row=2, column=1)
-
-        self.file_data_button = tk.Button(self.sidebar, text="FILE DATA")
-        self.file_data_button.grid(row=3, column=1, padx=5)
-
-        self.return_start_menu_button = tk.Button(self.sidebar,
-                                                  text="RETURN",
-                                                  command=self.return_start_menu)
-        self.return_start_menu_button.grid(row=4, column=1, pady=5)
-
-    def start_app(self):
-        self.create_data_selection_menu()
 
     def exit_app(self):
         self.window.quit()
@@ -93,7 +70,7 @@ class LinearRegressionApp:
         self.menubar.add_cascade(label="Options",
                                  menu=self.options_menu,
                                  underline=0)
-        
+
     def create_exit_menubar(self):
         self.exit_menu = tk.Menu(self.menubar)
         self.menubar.add_cascade(label="Exit",
