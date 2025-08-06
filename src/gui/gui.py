@@ -1,4 +1,5 @@
 import tkinter as tk
+from options import OptionsWindow
 
 
 class LinearRegressionApp:
@@ -14,9 +15,7 @@ class LinearRegressionApp:
         self.window.mainloop()
 
     def create_options_menu(self):
-        self.options_window = tk.Toplevel(self.window)
-        self.options_window.title("Options")
-        self.options_window.geometry("600x500")
+        OptionsWindow(self.window)
 
     def exit_app(self):
         self.window.quit()
