@@ -5,13 +5,18 @@ class LinearRegressionApp:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Linear Regression")
-        self.window.geometry("1600x1000")
+        self.window.geometry("1200x1000")
         self.menubar = tk.Menu(self.window)
         self.window.config(menu=self.menubar)
         self.create_data_menubar()
         self.create_options_menubar()
         self.create_exit_menubar()
         self.window.mainloop()
+
+    def create_options_menu(self):
+        self.options_window = tk.Toplevel(self.window)
+        self.options_window.title("Options")
+        self.options_window.geometry("600x500")
 
     def exit_app(self):
         self.window.quit()
@@ -27,7 +32,8 @@ class LinearRegressionApp:
 
     def create_options_menubar(self):
         self.options_menu = tk.Menu(self.menubar)
-        self.menubar.add_cascade(label="Options")
+        self.menubar.add_cascade(label="Options",
+                                 command=self.create_options_menu)
 
     def create_exit_menubar(self):
         self.exit_menu = tk.Menu(self.menubar)
