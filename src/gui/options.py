@@ -13,8 +13,8 @@ class OptionsWindow:
         main_width = main_window.winfo_width()
         main_height = main_window.winfo_height()
 
-        options_width = 600
-        options_height = 500
+        options_width = 900
+        options_height = 600
 
         x = main_x + (main_width // 2) - (options_width // 2)
         y = main_y + (main_height // 2) - (options_height // 2)
@@ -25,4 +25,3 @@ class OptionsWindow:
         self.window.transient(main_window)
         self.window.grab_set()
         self.window.wait_window()
-        

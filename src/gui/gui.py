@@ -6,7 +6,7 @@ class LinearRegressionApp:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Linear Regression")
-        self.window.geometry("1200x1000")
+        self.window.geometry("1500x900")
         self.menubar = tk.Menu(self.window)
         self.window.config(menu=self.menubar)
         self.create_data_menubar()
