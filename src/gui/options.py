@@ -6,7 +6,7 @@ class OptionsWindow:
         self.window = tk.Toplevel(main_window)
         self.window.title('Options')
 
-        #centering the window
+        #centering the options window
         main_window.update_idletasks()
         main_x = main_window.winfo_x()
         main_y = main_window.winfo_y()
@@ -20,6 +20,9 @@ class OptionsWindow:
         y = main_y + (main_height // 2) - (options_height // 2)
 
         self.window.geometry(f"{options_width}x{options_height}+{x}+{y}")
+
+        self.wip = tk.Label(self.window, text="Options WIP")
+        self.wip.place(relx=0.5, rely=0.5, anchor="center")
 
         self.window.resizable(False, False)
         self.window.transient(main_window)
