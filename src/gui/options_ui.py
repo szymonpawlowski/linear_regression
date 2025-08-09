@@ -2,16 +2,16 @@ import tkinter as tk
 
 
 class OptionsWindow:
-    def __init__(self, main_window):
-        self.window = tk.Toplevel(main_window)
+    def __init__(self, parent):
+        self.window = tk.Toplevel(parent)
         self.window.title('Options')
 
         #centering the options window
-        main_window.update_idletasks()
-        main_x = main_window.winfo_x()
-        main_y = main_window.winfo_y()
-        main_width = main_window.winfo_width()
-        main_height = main_window.winfo_height()
+        parent.update_idletasks()
+        main_x = parent.winfo_x()
+        main_y = parent.winfo_y()
+        main_width = parent.winfo_width()
+        main_height = parent.winfo_height()
 
         options_width = 900
         options_height = 600
@@ -21,10 +21,7 @@ class OptionsWindow:
 
         self.window.geometry(f"{options_width}x{options_height}+{x}+{y}")
 
-        self.wip = tk.Label(self.window, text="Options WIP")
-        self.wip.place(relx=0.5, rely=0.5, anchor="center")
-
         self.window.resizable(False, False)
-        self.window.transient(main_window)
+        self.window.transient(parent)
         self.window.grab_set()
         self.window.wait_window()
