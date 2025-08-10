@@ -6,13 +6,13 @@ def clear_frame(frame):
         widget.destroy()
 
 
-def show_random_data_ui(parent):
-    clear_frame(parent)
+def show_random_data_ui(frame):
+    clear_frame(frame)
 
 
-def show_manual_data_ui(parent):
-    clear_frame(parent)
+def show_manual_data_ui(frame):
+    clear_frame(frame)
 
 
-def show_file_data_ui(parent):
-    clear_frame(parent)
+def show_file_data_ui(frame):
+    clear_frame(frame)
