@@ -1,6 +1,6 @@
 import tkinter as tk
-from options import OptionsWindow
-from data import random_data_display
+from options_ui import OptionsWindow
+from data_ui import show_random_data_ui
 
 
 class LinearRegressionApp:
@@ -10,9 +10,21 @@ class LinearRegressionApp:
         self.window.geometry("1500x900")
         self.menubar = tk.Menu(self.window)
         self.window.config(menu=self.menubar)
-        self.create_data_menubar()
+
+        self.data_menu = tk.Menu(self.menubar,
+                                 tearoff=False)
+
+        self.data_menu.add_command(label="Generate random data",
+                                   command=show_random_data_ui(self.window))
+        self.data_menu.add_command(label="Input data manually")
+        self.data_menu.add_command(label="Import data from file")
+
+        self.menubar.add_cascade(label="Data",
+                                 menu=self.data_menu)
+
         self.menubar.add_command(label="Options",
                                  command=self.create_options_menu)
+
         self.menubar.add_command(label="Exit",
                                  command=self.exit_app)
         self.window.mainloop()
@@ -23,15 +35,5 @@ class LinearRegressionApp:
     def exit_app(self):
         self.window.quit()
 
-    def create_data_menubar(self):
-        self.data_menu = tk.Menu(self.menubar)
-        self.data_menu.add_command(label="Generate random data",
-                                   command=random_data_display(self.window))
-        self.data_menu.add_command(label="Input data manually")
-        self.data_menu.add_command(label="Import data from file")
-        self.menubar.add_cascade(label="Data",
-                                 menu=self.data_menu,
-                                 underline=0)
 
-
-app = LinearRegressionApp()
+LinearRegressionApp()
