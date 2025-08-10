@@ -1,6 +1,18 @@
 import tkinter as tk
 
-def random_data_display(main_window):
-    main_label = tk.Label(main_window,
-                          text="Generate Random Data")
-    main_label.pack(anchor="nw")
+
+def clear_frame(frame):
+    for widget in frame.winfo_children():
+        widget.destroy()
+
+
+def show_random_data_ui(parent):
+    clear_frame(parent)
+
+
+def show_manual_data_ui(parent):
+    clear_frame(parent)
+
+
+def show_file_data_ui(parent):
+    clear_frame(parent)
