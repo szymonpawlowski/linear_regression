@@ -9,11 +9,11 @@ class LinearRegressionApp:
         self.parent.title("Linear Regression")
         self.parent.geometry("1500x900")
 
-        self.content_frame = tk.Frame(self.parent)
-        self.content_frame.pack(expand=True, fill='both')
-
         self.menubar = tk.Menu(self.parent)
         self.parent.config(menu=self.menubar)
+
+        self.content_frame = tk.Frame(self.parent)
+        self.content_frame.pack(expand=True, fill='both')
 
         self.data_menu = tk.Menu(self.menubar,
                                  tearoff=False)

@@ -8,6 +8,10 @@ def clear_frame(frame):
 
 def show_random_data_ui(frame):
     clear_frame(frame)
+    title = tk.Label(frame,
+                     text="Generate Random data",
+                     font=("Helvetica", 20))
+    title.pack()
 
 
 def show_manual_data_ui(frame):
