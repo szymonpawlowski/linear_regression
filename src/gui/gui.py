@@ -13,17 +13,29 @@ class LinearRegressionApp:
         self.parent.config(menu=self.menubar)
 
         self.content_frame = tk.Frame(self.parent)
+        self.main_label = tk.Label(self.content_frame,
+                                   text="Linear Regression App",
+                                   font=("Helvetica", 20))
+        self.main_label.pack()
         self.content_frame.pack(expand=True, fill='both')
 
         self.data_menu = tk.Menu(self.menubar,
                                  tearoff=False)
 
-        self.data_menu.add_command(label="Generate random data",
-                                   command=show_random_data_ui(self.content_frame))
-        self.data_menu.add_command(label="Input data manually",
-                                   command=show_manual_data_ui(self.content_frame))
-        self.data_menu.add_command(label="Import data from file",
-                                   command=show_file_data_ui(self.content_frame))
+        self.data_menu.add_command(
+            label="Generate random data",
+            command=lambda: show_random_data_ui(self.content_frame)
+        )
+
+        self.data_menu.add_command(
+            label="Input data manually",
+            command=lambda: show_manual_data_ui(self.content_frame)
+        )
+
+        self.data_menu.add_command(
+            label="Import data from file",
+            command=lambda: show_file_data_ui(self.content_frame)
+        )
 
         self.menubar.add_cascade(label="Data",
                                  menu=self.data_menu)
