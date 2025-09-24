@@ -34,7 +34,7 @@ class LinearRegressionApp:
 
         self.data_menu.add_command(
             label="Import data from file",
-            command=lambda: show_file_data_ui(self.content_frame)
+            command=lambda: show_file_data_ui(self.content_frame, self.parent)
         )
 
         self.menubar.add_cascade(label="Data",
