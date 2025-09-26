@@ -6,7 +6,7 @@ class OptionsWindow:
         self.window = tk.Toplevel(parent)
         self.window.title('Options')
 
-        #centering the options window
+        #centering
         parent.update_idletasks()
         main_x = parent.winfo_x()
         main_y = parent.winfo_y()
