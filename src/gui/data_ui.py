@@ -19,7 +19,27 @@ def show_random_data_ui(frame):
     title = tk.Label(frame,
                      text="Generate Random Data",
                      font=("Helvetica", 20))
+
+    generate_button = tk.Button(frame,
+                                text="Generate Data")
+    label_n = tk.Label(frame,
+                         text="Number of data points (n): ")
+    label_xmin = tk.Label(frame,
+                          text="Min. value of x (x min): ")
+    label_xmax = tk.Label(frame,
+                          text="Max. value of x (x max): ")
+    label_wmin = tk.Label(frame,
+                       text="Min. weight value (weight min): ")
+    label_wmax = tk.Label(frame,
+                          text="Max. weight value (weight max): ")
+
     title.pack()
+    label_n.pack()
+    label_xmin.pack()
+    label_xmax.pack()
+    label_wmin.pack()
+    label_wmax.pack()
+    generate_button.pack(anchor='s', pady=10)
 
 
 def show_manual_data_ui(frame):
