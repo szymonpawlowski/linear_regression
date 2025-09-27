@@ -7,7 +7,10 @@ class LinearRegressionApp:
     def __init__(self):
         self.parent = tk.Tk()
         self.parent.title("Linear Regression")
-        self.parent.geometry("1500x900")
+        #width = self.parent.winfo_screenwidth()
+        #height = self.parent.winfo_screenheight()
+        #self.parent.geometry(f"{width}x{height}")
+        self.parent.state('zoomed')
 
         self.menubar = tk.Menu(self.parent)
         self.parent.config(menu=self.menubar)
