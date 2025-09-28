@@ -22,24 +22,43 @@ def show_random_data_ui(frame):
 
     generate_button = tk.Button(frame,
                                 text="Generate Data")
-    label_n = tk.Label(frame,
+    n_label = tk.Label(frame,
                          text="Number of data points (n): ")
-    label_xmin = tk.Label(frame,
-                          text="Min. value of x (x min): ")
-    label_xmax = tk.Label(frame,
-                          text="Max. value of x (x max): ")
-    label_wmin = tk.Label(frame,
-                       text="Min. weight value (weight min): ")
-    label_wmax = tk.Label(frame,
-                          text="Max. weight value (weight max): ")
+    n_entry = tk.Entry(frame)
 
-    title.pack()
-    label_n.pack()
-    label_xmin.pack()
-    label_xmax.pack()
-    label_wmin.pack()
-    label_wmax.pack()
-    generate_button.pack(anchor='s', pady=10)
+    x_label = tk.Label(frame,
+                       text="Range of x values: ")
+    xmin_entry = tk.Entry(frame)
+    xmax_entry = tk.Entry(frame)
+
+    weight_label = tk.Label(frame,
+                            text="Range of weight values: ")
+    weight_min_entry = tk.Entry(frame)
+    weight_max_entry = tk.Entry(frame)
+
+    bias_label = tk.Label(frame,
+                          text="Range of bias values: ")
+    bias_min_entry = tk.Entry(frame)
+    bias_max_entry = tk.Entry(frame)
+
+    title.grid(row=0, column=0, columnspan=8, sticky='we')
+
+    n_label.grid(row=1, column=0)
+    n_entry.grid(row=1, column=1, columnspan=2, sticky='we')
+
+    x_label.grid(row=2, column=0)
+    xmin_entry.grid(row=2, column=1)
+    xmax_entry.grid(row=2, column=2)
+
+    weight_label.grid(row=3, column=0)
+    weight_min_entry.grid(row=3, column=1)
+    weight_max_entry.grid(row=3, column=2)
+
+    bias_label.grid(row=4, column=0)
+    bias_min_entry.grid(row=4, column=1)
+    bias_max_entry.grid(row=4, column=2)
+
+    generate_button.grid(row=5, column=1)
 
 
 def show_manual_data_ui(frame):
