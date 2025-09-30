@@ -1,4 +1,4 @@
-from src.model.utils import generate_random_data, load_data_file, validate_input
+import tkinter as tk
 
 
 def choose_data_source():

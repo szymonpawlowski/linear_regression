@@ -2,8 +2,8 @@
 Implementation of linear regression in Python.
 
 ## 📄 Description
-This project implements linear regression from the ground up. The model is learning on randomly generated data, user input data or data from file. Everything is set in a friendly GUI easy to use.
-PS. Currently as of July 2025 the project isn't finished.
+This project implements linear regression from the ground up. The model is learning on randomly generated data, user input data or data from file. Everything is set in a friendly GUI easy to use.\
+PS. Currently as of October 2025 the project isn't finished.
 
 ## 📦 Requirements
 In order for this project to work you'll need:
@@ -35,17 +35,19 @@ linear_regression/
 │   │   └── validators.py
 │   │
 │   ├── gui/
-│   │   ├── buttons.py
-│   │   ├── callbacks
-│   │   └── gui.py
+│   │   ├── data_ui.py
+│   │   ├── gui.py
+│   │   └── options_ui.py
 │   │
 │   ├── model/
 │   │   ├── regression.py
 │   │   └── utils.py
 │   │
-│   └── test/
-│       ├── test_input_handler.py
-│       └── test_regression.py
+│   ├── test/
+│   │   ├── test_input_handler.py
+│   │   └── test_regression.py
+│   │
+│   └── config.py
 │
 ├── .gitignore
 ├── LICENSE.txt
