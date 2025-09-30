@@ -18,28 +18,47 @@ def show_random_data_ui(frame):
 
     title = tk.Label(frame,
                      text="Generate Random Data",
-                     font=("Helvetica", 20))
+                     font=('calibre', 20, 'bold'))
 
     generate_button = tk.Button(frame,
                                 text="Generate Data")
+
+    n = tk.IntVar()
     n_label = tk.Label(frame,
-                         text="Number of data points (n): ")
-    n_entry = tk.Entry(frame)
+                       text="Number of data points (n): ",
+                       font=('calibre', 10, 'bold'))
+    n_entry = tk.Entry(frame,
+                       textvariable=n)
 
+    x_min = tk.IntVar()
+    x_max = tk.IntVar()
     x_label = tk.Label(frame,
-                       text="Range of x values: ")
-    xmin_entry = tk.Entry(frame)
-    xmax_entry = tk.Entry(frame)
+                       text="Range of x values: ",
+                       font=('calibre', 10, 'bold'))
+    xmin_entry = tk.Entry(frame,
+                          textvariable=x_min)
+    xmax_entry = tk.Entry(frame,
+                          textvariable=x_max)
 
+    w_min = tk.IntVar()
+    w_max = tk.IntVar()
     weight_label = tk.Label(frame,
-                            text="Range of weight values: ")
-    weight_min_entry = tk.Entry(frame)
-    weight_max_entry = tk.Entry(frame)
+                            text="Range of weight values: ",
+                            font=('calibre', 10, 'bold'))
+    weight_min_entry = tk.Entry(frame,
+                                textvariable=w_min)
+    weight_max_entry = tk.Entry(frame,
+                                textvariable=w_max)
 
+    b_min = tk.IntVar()
+    b_max = tk.IntVar()
     bias_label = tk.Label(frame,
-                          text="Range of bias values: ")
-    bias_min_entry = tk.Entry(frame)
-    bias_max_entry = tk.Entry(frame)
+                          text="Range of bias values: ",
+                          font=('calibre', 10, 'bold'))
+    bias_min_entry = tk.Entry(frame,
+                              textvariable=b_min)
+    bias_max_entry = tk.Entry(frame,
+                              textvariable=b_max)
 
     title.grid(row=0, column=0, columnspan=8, sticky='we')
 
@@ -66,7 +85,7 @@ def show_manual_data_ui(frame):
 
     title = tk.Label(frame,
                      text="Manual Data Input",
-                     font=("Helvetica", 20))
+                     font=('calibre', 20, 'bold'))
     title.pack()
 
 
@@ -75,7 +94,7 @@ def show_file_data_ui(frame):
 
     title = tk.Label(frame,
                      text="Input Data File",
-                     font=("Helvetica", 20))
+                     font=('calibre', 20, 'bold'))
 
     select_file_label = tk.Label(frame, text="Selected file: ")
     browse_file_button = tk.Button(frame, text="Browse...",
