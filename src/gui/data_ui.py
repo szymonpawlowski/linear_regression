@@ -20,45 +20,43 @@ def show_random_data_ui(frame):
                      text="Generate Random Data",
                      font=('calibre', 20, 'bold'))
 
-    generate_button = tk.Button(frame,
-                                text="Generate Data")
-
-    n = tk.IntVar()
     n_label = tk.Label(frame,
                        text="Number of data points (n): ",
                        font=('calibre', 10, 'bold'))
-    n_entry = tk.Entry(frame,
-                       textvariable=n)
+    n_entry = tk.Entry(frame)
 
-    x_min = tk.IntVar()
-    x_max = tk.IntVar()
     x_label = tk.Label(frame,
                        text="Range of x values: ",
                        font=('calibre', 10, 'bold'))
-    xmin_entry = tk.Entry(frame,
-                          textvariable=x_min)
-    xmax_entry = tk.Entry(frame,
-                          textvariable=x_max)
+    xmin_entry = tk.Entry(frame)
+    xmax_entry = tk.Entry(frame)
 
-    w_min = tk.IntVar()
-    w_max = tk.IntVar()
     weight_label = tk.Label(frame,
                             text="Range of weight values: ",
                             font=('calibre', 10, 'bold'))
-    weight_min_entry = tk.Entry(frame,
-                                textvariable=w_min)
-    weight_max_entry = tk.Entry(frame,
-                                textvariable=w_max)
+    weight_min_entry = tk.Entry(frame)
+    weight_max_entry = tk.Entry(frame)
 
-    b_min = tk.IntVar()
-    b_max = tk.IntVar()
     bias_label = tk.Label(frame,
                           text="Range of bias values: ",
                           font=('calibre', 10, 'bold'))
-    bias_min_entry = tk.Entry(frame,
-                              textvariable=b_min)
-    bias_max_entry = tk.Entry(frame,
-                              textvariable=b_max)
+    bias_min_entry = tk.Entry(frame)
+    bias_max_entry = tk.Entry(frame)
+
+    def submit():
+        n = int(n_entry.get())
+        x_min = float(xmin_entry.get())
+        x_max = float(xmax_entry.get())
+        w_min = float(weight_min_entry.get())
+        w_max = float(weight_max_entry.get())
+        b_min = float(bias_min_entry.get())
+        b_max = float(bias_max_entry.get())
+
+        print(f"{n}, {x_min}, {x_max}, {w_min}, {w_max}, {b_min}, {b_max}")
+
+    generate_button = tk.Button(frame,
+                                text="Generate Data",
+                                command=submit)
 
     title.grid(row=0, column=0, columnspan=8, sticky='we')
 
@@ -78,6 +76,8 @@ def show_random_data_ui(frame):
     bias_max_entry.grid(row=4, column=2)
 
     generate_button.grid(row=5, column=1)
+    
+    
 
 
 def show_manual_data_ui(frame):
