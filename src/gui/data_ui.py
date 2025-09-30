@@ -25,6 +25,16 @@ def show_random_data_ui(frame):
                        font=('calibre', 10, 'bold'))
     n_entry = tk.Entry(frame)
 
+    epochs_label = tk.Label(frame,
+                            text="Number of epochs: ",
+                            font=('calibre', 10, 'bold'))
+    epochs_entry = tk.Entry(frame)
+
+    lr_label = tk.Label(frame,
+                        text="Learning rate: ",
+                        font=('calibre', 10, 'bold'))
+    lr_entry = tk.Entry(frame)
+
     x_label = tk.Label(frame,
                        text="Range of x values: ",
                        font=('calibre', 10, 'bold'))
@@ -45,6 +55,8 @@ def show_random_data_ui(frame):
 
     def submit():
         n = int(n_entry.get())
+        epochs = int(epochs_entry.get())
+        lr = float(lr_entry.get())
         x_min = float(xmin_entry.get())
         x_max = float(xmax_entry.get())
         w_min = float(weight_min_entry.get())
@@ -52,7 +64,7 @@ def show_random_data_ui(frame):
         b_min = float(bias_min_entry.get())
         b_max = float(bias_max_entry.get())
 
-        print(f"{n}, {x_min}, {x_max}, {w_min}, {w_max}, {b_min}, {b_max}")
+        print(f"{n}, {epochs}, {lr}, {x_min}, {x_max}, {w_min}, {w_max}, {b_min}, {b_max}")
 
     generate_button = tk.Button(frame,
                                 text="Generate Data",
@@ -63,21 +75,27 @@ def show_random_data_ui(frame):
     n_label.grid(row=1, column=0)
     n_entry.grid(row=1, column=1, columnspan=2, sticky='we')
 
-    x_label.grid(row=2, column=0)
-    xmin_entry.grid(row=2, column=1)
-    xmax_entry.grid(row=2, column=2)
+    epochs_label.grid(row=2, column=0)
+    epochs_entry.grid(row=2, column=1, columnspan=2, sticky='we')
 
-    weight_label.grid(row=3, column=0)
-    weight_min_entry.grid(row=3, column=1)
-    weight_max_entry.grid(row=3, column=2)
+    lr_label.grid(row=3, column=0)
+    lr_entry.grid(row=3, column=1, columnspan=2, sticky='we')
 
-    bias_label.grid(row=4, column=0)
-    bias_min_entry.grid(row=4, column=1)
-    bias_max_entry.grid(row=4, column=2)
+    x_label.grid(row=4, column=0)
+    xmin_entry.grid(row=4, column=1)
+    xmax_entry.grid(row=4, column=2)
 
-    generate_button.grid(row=5, column=1)
-    
-    
+    weight_label.grid(row=5, column=0)
+    weight_min_entry.grid(row=5, column=1)
+    weight_max_entry.grid(row=5, column=2)
+
+    bias_label.grid(row=6, column=0)
+    bias_min_entry.grid(row=6, column=1)
+    bias_max_entry.grid(row=6, column=2)
+
+    generate_button.grid(row=7, column=1)
+
+
 
 
 def show_manual_data_ui(frame):
