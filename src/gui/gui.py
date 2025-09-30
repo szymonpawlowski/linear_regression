@@ -7,9 +7,6 @@ class LinearRegressionApp:
     def __init__(self):
         self.parent = tk.Tk()
         self.parent.title("Linear Regression")
-        #width = self.parent.winfo_screenwidth()
-        #height = self.parent.winfo_screenheight()
-        #self.parent.geometry(f"{width}x{height}")
         self.parent.state('zoomed')
 
         self.menubar = tk.Menu(self.parent)
@@ -18,7 +15,7 @@ class LinearRegressionApp:
         self.content_frame = tk.Frame(self.parent)
         self.main_label = tk.Label(self.content_frame,
                                    text="Linear Regression App",
-                                   font=("Helvetica", 20))
+                                   font=('calibre', 30, 'bold'))
         self.main_label.pack()
         self.content_frame.pack(expand=True, fill='both')
 
