@@ -53,7 +53,7 @@ def show_random_data_ui(frame):
     bias_min_entry = tk.Entry(frame)
     bias_max_entry = tk.Entry(frame)
 
-    def submit():
+    def submit_random():
         n = int(n_entry.get())
         epochs = int(epochs_entry.get())
         lr = float(lr_entry.get())
@@ -64,11 +64,11 @@ def show_random_data_ui(frame):
         b_min = float(bias_min_entry.get())
         b_max = float(bias_max_entry.get())
 
-        print(f"{n}, {epochs}, {lr}, {x_min}, {x_max}, {w_min}, {w_max}, {b_min}, {b_max}")
+        #print(f"{n}, {epochs}, {lr}, {x_min}, {x_max}, {w_min}, {w_max}, {b_min}, {b_max}")
 
     generate_button = tk.Button(frame,
                                 text="Generate Data",
-                                command=submit)
+                                command=submit_random)
 
     title.grid(row=0, column=0, columnspan=8, sticky='we')
 
