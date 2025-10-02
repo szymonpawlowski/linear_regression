@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+from src.regression.utils import generate_random_data
 
 
 def clear_frame(frame):
@@ -20,11 +21,6 @@ def show_random_data_ui(frame):
                      text="Generate Random Data",
                      font=('calibre', 20, 'bold'))
 
-    n_label = tk.Label(frame,
-                       text="Number of data points (n): ",
-                       font=('calibre', 10, 'bold'))
-    n_entry = tk.Entry(frame)
-
     epochs_label = tk.Label(frame,
                             text="Number of epochs: ",
                             font=('calibre', 10, 'bold'))
@@ -34,6 +30,11 @@ def show_random_data_ui(frame):
                         text="Learning rate: ",
                         font=('calibre', 10, 'bold'))
     lr_entry = tk.Entry(frame)
+
+    n_label = tk.Label(frame,
+                       text="Number of data points (n): ",
+                       font=('calibre', 10, 'bold'))
+    n_entry = tk.Entry(frame)
 
     x_label = tk.Label(frame,
                        text="Range of x values: ",
@@ -54,9 +55,9 @@ def show_random_data_ui(frame):
     bias_max_entry = tk.Entry(frame)
 
     def submit_random():
-        n = int(n_entry.get())
         epochs = int(epochs_entry.get())
         lr = float(lr_entry.get())
+        n = int(n_entry.get())
         x_min = float(xmin_entry.get())
         x_max = float(xmax_entry.get())
         w_min = float(weight_min_entry.get())
@@ -64,7 +65,7 @@ def show_random_data_ui(frame):
         b_min = float(bias_min_entry.get())
         b_max = float(bias_max_entry.get())
 
-        #print(f"{n}, {epochs}, {lr}, {x_min}, {x_max}, {w_min}, {w_max}, {b_min}, {b_max}")
+        #print(f"{epochs}, {lr}, {n}, {x_min}, {x_max}, {w_min}, {w_max}, {b_min}, {b_max}")
 
     generate_button = tk.Button(frame,
                                 text="Generate Data",
@@ -72,14 +73,14 @@ def show_random_data_ui(frame):
 
     title.grid(row=0, column=0, columnspan=8, sticky='we')
 
-    n_label.grid(row=1, column=0)
-    n_entry.grid(row=1, column=1, columnspan=2, sticky='we')
+    epochs_label.grid(row=1, column=0)
+    epochs_entry.grid(row=1, column=1, columnspan=2, sticky='we')
 
-    epochs_label.grid(row=2, column=0)
-    epochs_entry.grid(row=2, column=1, columnspan=2, sticky='we')
+    lr_label.grid(row=2, column=0)
+    lr_entry.grid(row=2, column=1, columnspan=2, sticky='we')
 
-    lr_label.grid(row=3, column=0)
-    lr_entry.grid(row=3, column=1, columnspan=2, sticky='we')
+    n_label.grid(row=3, column=0)
+    n_entry.grid(row=3, column=1, columnspan=2, sticky='we')
 
     x_label.grid(row=4, column=0)
     xmin_entry.grid(row=4, column=1)
@@ -94,8 +95,6 @@ def show_random_data_ui(frame):
     bias_max_entry.grid(row=6, column=2)
 
     generate_button.grid(row=7, column=1)
-
-
 
 
 def show_manual_data_ui(frame):
