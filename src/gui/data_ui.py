@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import filedialog
-from src.regression.utils import generate_random_data
 
 
 def clear_frame(frame):
