@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+from src.regression.data_sources import get_random_data
 
 
 def clear_frame(frame):
@@ -63,8 +64,8 @@ def show_random_data_ui(frame):
         w_max = float(weight_max_entry.get())
         b_min = float(bias_min_entry.get())
         b_max = float(bias_max_entry.get())
-
-        #print(f"{epochs}, {lr}, {n}, {x_min}, {x_max}, {w_min}, {w_max}, {b_min}, {b_max}")
+        data = [epochs, lr, n, x_min, x_max, w_min, w_max, b_min, b_max]
+        return data
 
     generate_button = tk.Button(frame,
                                 text="Generate Data",
