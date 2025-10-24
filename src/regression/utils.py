@@ -18,29 +18,6 @@ def validate_input(X, y_true):
         raise ValueError("⚠️ Error: Number of X and Y samples must match!")
 
 
-def generate_random_data(
-        dim = 1,
-        n_samples = 100,
-        x_range = (1, 10),
-        noise = 1.0,
-        w_range = (-10, 10),
-        b_range = (-5, 5)
-):
-    if dim == 1:
-        X = [random.uniform(*x_range) for _ in range(n_samples)]
-        weights_true = random.uniform(*w_range)
-        bias_true = random.uniform(*b_range)
-        y_true = [weights_true * x + bias_true + random.uniform(-noise, noise) for x in X]
-        return X, y_true
-    else:
-        X = np.random.uniform(*x_range, size = (n_samples, dim))
-        weights_true = np.random.uniform(*w_range, size = dim)
-        bias_true = np.random.uniform(*b_range)
-        noise = np.random.uniform(-noise, noise, size = n_samples)
-        y_true = np.dot(X, weights_true) + bias_true + noise
-        return X.tolist(), y_true.tolist()
-
-
 def load_data_file(filepath):
     try:
         with open(filepath, 'r') as file:
@@ -63,6 +40,14 @@ def load_data_file(filepath):
     except Exception as e:
         print(f"⚠️ Error: {e}")
         return None, None
+
+
+def generate_random_data(data):
+    X = [random.uniform(data[3], data[4]) for _ in range(data[2])]
+    weight = random.uniform(data[5], data[6])
+    bias = random.uniform(data[7], data[8])
+    y_true = [weight * x + bias + random.uniform(-0.1, 0.1) for x in X]
+    return X, y_true
 
 
 def plot_regression(X, y_true, epoch, y_pred):
