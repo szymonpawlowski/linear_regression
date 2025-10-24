@@ -1,11 +1,11 @@
-# 〰️ Linear Regression Model App
+# 📈 Linear Regression Model App
 Implementation of linear regression in Python.
 
 ## 📄 Description
 This project implements linear regression from the ground up. The model is learning on randomly generated data, user input data or data from file. Everything is set in a friendly GUI easy to use.\
 PS. Currently as of October 2025 the project isn't finished.
 
-## 📦 Requirements
+## 📌 Requirements
 In order for this project to work you'll need:
 - Python 3.x
 - Tkinter
@@ -30,17 +30,13 @@ linear_regression/
 │
 ├── src/
 │   │
-│   ├── data/
-│   │   ├── input_handler.py
-│   │   └── validators.py
-│   │
 │   ├── gui/
 │   │   ├── data_ui.py
 │   │   ├── gui.py
 │   │   └── options_ui.py
 │   │
-│   ├── model/
-│   │   ├── regression.py
+│   ├── regression/
+│   │   ├── model.py
 │   │   └── utils.py
 │   │
 │   ├── test/
