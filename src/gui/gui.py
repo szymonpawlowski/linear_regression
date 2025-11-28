@@ -18,6 +18,10 @@ class LinearRegressionApp:
         self.learning_rate = 0.01
         self.epochs = 1000
 
+        self.plot_frequency = 20
+        self.save_plot_auto = False
+        self.mse_stop_threshold = 0.0001
+
         self.menubar = tk.Menu(self.parent)
         self.parent.config(menu=self.menubar)
 
