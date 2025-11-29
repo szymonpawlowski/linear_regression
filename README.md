@@ -33,10 +33,12 @@ linear_regression/
 │   ├── gui/
 │   │   ├── data_ui.py
 │   │   ├── gui.py
-│   │   └── options_ui.py
+│   │   ├── options_ui.py
+│   │   └── training_ui.py
 │   │
 │   ├── regression/
 │   │   ├── model.py
+│   │   ├── trainer.py
 │   │   └── utils.py
 │   │
 │   ├── test/
