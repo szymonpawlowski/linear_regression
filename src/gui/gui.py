@@ -62,7 +62,7 @@ class LinearRegressionApp:
         self.main_label.pack(pady=50)
 
         info_label = tk.Label(self.content_frame,
-                              text="Wybierz źródło danych z menu 'Data' aby rozpocząć.",
+                              text="Choose data source from menu 'Data' to begin.",
                               font=('calibre', 12))
         info_label.pack()
 
