@@ -1,9 +1,9 @@
 # 📈 Linear Regression Model App
-Implementation of linear regression in Python.
+Implementation of linear regression in Python. Current version: 1.0.0
 
 ## 📄 Description
-This project implements linear regression from the ground up. The model is learning on randomly generated data, user input data or data from file. Everything is set in a friendly GUI easy to use.\
-PS. Currently as of October 2025 the project isn't finished.
+This project implements linear regression from the ground up. The model is learning on randomly generated data, user input data or data from file. Everything is set in a friendly GUI easy to use.
+
 
 ## 📌 Requirements
 In order for this project to work you'll need:
@@ -19,9 +19,9 @@ pip install -r requirements.txt
 ```
 
 ## ▶️ Launch
-To launch current version of this project, use this command in your terminal:
+To launch this project, use this command in your terminal:
 ```bash
-python src/gui/gui.py
+python src/main.py
 ```
 
 ## 📁 File structure
