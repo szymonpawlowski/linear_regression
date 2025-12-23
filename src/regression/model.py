@@ -28,7 +28,7 @@ class SimpleLinearRegression:
             self.bias -= self.learning_rate * db
 
             if on_epoch:
-                on_epoch(epoch, self.predict(X_list))
+                on_epoch(epoch, y_pred)
 
     def predict(self, X):
         return [self.weights * x + self.bias for x in X]

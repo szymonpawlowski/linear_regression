@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, filedialog
 import threading
-import time
-
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
@@ -11,146 +9,151 @@ from regression.utils import mean_squared_error
 from regression.trainer import Trainer
 
 
-class TrainingWindow(tk.Toplevel):
+class TrainingPanel(tk.Frame):
     def __init__(self, parent, app_instance):
-        super.__init__(parent)
-        self.title("Training and Visualization")
+        super().__init__(parent)
         self.app_instance = app_instance
         self.is_training = False
-
-        if not self.app_instance.X_data or not self.app_instance.y_data:
-            messagebox.showerror("Error", "No data. Load data first.")
-            self.destroy()
-            return
-
-        self.geometry("800x600")
 
         self.epoch_var = tk.StringVar(value="Epoch: 0")
         self.mse_var = tk.StringVar(value="MSE = -")
         self.weight_var = tk.StringVar(value="Weight (w) = 0.0")
         self.bias_var = tk.StringVar(value="Bias (b) = 0.0")
 
-        self.createWidgets()
-        self.plotInitialData()
+        self.create_widgets()
+        self.plot_initial_data()
 
-    def createWidgets(self):
-        main_paned_window = tk.PanedWindow(self, orient=tk.HORIZONTAL)
-        main_paned_window.pack(fill=tk.BOTH, expand=True)
+    def create_widgets(self):
+        self.main_paned = tk.PanedWindow(self, orient=tk.HORIZONTAL)
+        self.main_paned.pack(fill=tk.BOTH, expand=True)
 
-        self.plotFrame = tk.Frame(main_paned_window, bd=2, relief=tk.SUNKEN)
-        main_paned_window.add(self.plotFrame, width=550)
+        # left side - plot
+        self.plot_frame = tk.Frame(self.main_paned, bd=1, relief=tk.SUNKEN)
+        self.main_paned.add(self.plot_frame, stretch='always')
 
-        self.control_frame = tk.Frame(main_paned_window, width=250, padx=10, pady=10)
-        main_paned_window.add(self.control_frame)
+        # right side - stats
+        self.control_panel = tk.Frame(self.main_paned, width=300, padx=10, pady=10)
+        self.main_paned.add(self.control_panel, sticky=tk.NSEW)
 
-        self.fig = Figure(figsize=(5, 4), dpi=100)
+        # matplotlib config
+        self.fig = Figure(figsize=(5, 4), dpi=100, tight_layout=True)
         self.ax = self.fig.add_subplot(111)
-
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.plot_frame)
-        self.canvas.draw()
+        self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
-        # Opcjonalny pasek narzędzi Matplotlib
-        toolbar = NavigationToolbar2Tk(self.canvas, self.plot_frame)
-        toolbar.update()
+        # toolbar
+        self.toolbar = NavigationToolbar2Tk(self.canvas, self.plot_frame)
+        self.toolbar.update()
 
-        self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=1)
+        tk.Label(self.control_panel, text="").pack(pady=20)
 
-        # --- Kontrolki (Prawy Panel) ---
-        tk.Label(self.control_frame, text="Wyniki Treningu", font=('calibre', 14, 'bold')).pack(pady=10)
+        results_group = tk.LabelFrame(self.control_panel, text=" Live Stats ", padx=10, pady=10)
+        results_group.pack(fill='x', pady=10)
+        font_style = ('Consolas', 16, 'bold')
 
-        tk.Label(self.control_frame, textvariable=self.epoch_var).pack(anchor='w')
-        tk.Label(self.control_frame, textvariable=self.mse_var).pack(anchor='w')
-        tk.Label(self.control_frame, textvariable=self.weight_var).pack(anchor='w')
-        tk.Label(self.control_frame, textvariable=self.bias_var).pack(anchor='w')
+        tk.Label(results_group, textvariable=self.epoch_var, font=font_style).pack(anchor='w')
+        tk.Label(results_group, textvariable=self.mse_var, font=font_style).pack(anchor='w')
 
-        self.start_button = tk.Button(self.control_frame, text="Start Treningu", command=self.start_training, bg="#4CAF50", fg="white", height=2)
-        self.start_button.pack(pady=20, fill='x')
+        tk.Frame(results_group, height=1, bg="#bdc3c7").pack(fill='x', pady=5)
+
+        tk.Label(results_group, textvariable=self.weight_var, font=font_style).pack(anchor='w')
+        tk.Label(results_group, textvariable=self.bias_var, font=font_style).pack(anchor='w', pady=(0, 10))
+
+        self.start_button = tk.Button(
+            self.control_panel,
+            text="Start Training",
+            command=self.toggle_training,
+            bg="#4CAF50",
+            fg="white",
+            font=('Arial', 10, 'bold'),
+            height=2,
+            cursor='hand2'
+        )
+        self.start_button.pack(fill='x', side=tk.BOTTOM, pady=20)
 
     def plot_initial_data(self):
         self.ax.clear()
-        self.ax.scatter(self.app_instance.X_data, self.app_instance.y_data, s=20, color='blue', label='Dane wejściowe')
-        self.ax.set_title("Regresja Liniowa")
+        if self.app_instance.X_data and self.app_instance.y_data:
+            self.ax.scatter(self.app_instance.X_data, self.app_instance.y_data, s=20, color='blue', label='Input Data')
+
+        self.ax.set_title("Linear Regression Visualization")
         self.ax.set_xlabel("X")
         self.ax.set_ylabel("Y")
-        self.ax.grid(True)
+        self.ax.set_facecolor('#f8f9fa')
+        self.ax.grid(True, linestyle='--', alpha=0.6)
+        self.ax.spines['top'].set_visible(False)
+        self.ax.spines['right'].set_visible(False)
         self.ax.legend()
         self.canvas.draw()
 
     def update_plot_callback(self, epoch, w, b, y_pred):
-        current_mse = mean_squared_error(self.app_instance.y_data, y_pred)
+        mse = mean_squared_error(self.app_instance.y_data, y_pred)
 
         self.epoch_var.set(f"Epoch: {epoch}/{self.app_instance.epochs}")
-        self.mse_var.set(f"MSE: {current_mse:.4f}")
+        self.mse_var.set(f"MSE: {mse:.4f}")
         self.weight_var.set(f"Weight (w): {w:.4f}")
         self.bias_var.set(f"Bias (b): {b:.4f}")
 
-        if current_mse < self.app_instance.mse_stop_threshold:
-            self.stop_training("Early Stopping: Osiągnięto minimalny błąd.")
+        # early stop logic
+        if mse < self.app_instance.mse_stop_threshold:
+            self.is_training = False
             return
 
+        # refresh
         if epoch % self.app_instance.plot_frequency == 0 or epoch == self.app_instance.epochs:
-            self.after(1, lambda: self._draw_regression_line(y_pred))
+            self.after(0, lambda: self._draw_regression_line(y_pred))
 
     def _draw_regression_line(self, y_pred):
         try:
             if hasattr(self, 'regression_line'):
                 self.regression_line.pop(0).remove()
 
-            self.regression_line = self.ax.plot(self.app_instance.X_data, y_pred, color='red', label='Regression line')
-            self.ax.legend()
-            self.canvas.draw()
-        except:
+            self.regression_line = self.ax.plot(self.app_instance.X_data, y_pred, color='red', linewidth=2, label='Regression')
+            self.canvas.draw_idle()
+        except Exception:
             pass
 
-    def start_training(self):
+    def toggle_training(self):
         if self.is_training:
-            self.stop_training("Manual stop.")
+            self.is_training = False
             return
 
         self.is_training = True
-        self.start_button.config(text="STOP Training", bg="#FF0000")
+        self.start_button.config(text="STOP Training", bg="#f44336")
 
+        # plot reset
         self.plot_initial_data()
-        self.epoch_var.set("Epoch: START")
 
-        self.training_thread = threading.Thread(target=self.run_trainer, daemon=True)
-        self.training_thread.start()
+        # start
+        self.thread = threading.Thread(target=self.run_trainer, daemon=True)
+        self.thread.start()
 
-    def stop_training(self, message="Training finished."):
+    def run_trainer(self):
+        def internal_callback(epoch, y_pred):
+            if not self.is_training:
+                raise InterruptedError
+            self.after(0, lambda: self.update_plot_callback(epoch, trainer_obj.model.weights, trainer_obj.model.bias, y_pred))
+
+        try:
+            trainer_obj = Trainer(self.app_instance, internal_callback)
+            trainer_obj.run()
+
+            self.after(0, lambda: self.finish_training("Training completed successfully."))
+
+        except InterruptedError:
+            self.after(0, lambda: self.finish_training("Training stopped by user."))
+        except Exception as e:
+            self.after(0, lambda: self.finish_training(f"Error: {str(e)}"))
+
+    def finish_training(self, message):
         self.is_training = False
-        self.start_button.config(text="Resume training", bg="#FFA500")
-        messagebox.showinfo("Training status", message)
+        self.start_button.config(text="Start Training", bg="#4CAF50")
+        messagebox.showinfo("Trainer", message)
 
         if self.app_instance.save_plot_auto:
             self.save_plot()
 
-    def run_trainer(self):
-        from . import model # TODO: add model import
-
-        regressor = model.SimpleLinearRegression(
-            learning_rate=self.app_instance.learning_rate,
-            epochs=self.app_instance.epochs
-        )
-
-        def callback(epoch, y_pred):
-            if not self.is_training:
-                raise InterruptedError
-
-            self.after(1, lambda: self.update_plot_callback(epoch, regressor.weights, regressor.bias, y_pred))
-
-        try:
-            regressor.fit(self.app_instance.X_data, self.app_instance.y_data, on_epoch=callback)
-
-            self.after(1, lambda: self.stop_training(f"Training ended after {self.app_instance.epochs} epochs."))
-
-        except InterruptedError:
-            self.after(1, lambda: self.stop_training("Training stopped by user."))
-        except Exception as e:
-            self.after(1, lambda: self.stop_training(f"Error occured during training: {e}"))
-
     def save_plot(self):
-        filepath = filedialog.asksaveasfilename(defaultextension=".png",
-                                                filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg")])
-        if filepath:
-            self.fig.savefig(filepath)
-            messagebox.showinfo("Saved", f"Plot saved to: {filepath}")
+        path = filedialog.asksaveasfilename(defaultextension=".png")
+        if path:
+            self.fig.savefig(path)

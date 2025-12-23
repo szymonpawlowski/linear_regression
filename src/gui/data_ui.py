@@ -41,7 +41,6 @@ def parse_manual_data(text_data):
 
 
 def show_random_data_ui(frame, app_instance):
-
     tk.Label(frame, text="Generate Random Data", font=('calibre', 16, 'bold')).grid(row=0, column=0, columnspan=2, pady=10)
 
     entries = {}
