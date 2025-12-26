@@ -1,5 +1,2 @@
-tkinter
 numpy
-random
-time
-threading
+matplotlib

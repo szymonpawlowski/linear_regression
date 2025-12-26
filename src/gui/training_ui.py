@@ -52,12 +52,12 @@ class TrainingPanel(tk.Frame):
         font_style = ('Consolas', 16, 'bold')
 
         tk.Label(results_group, textvariable=self.epoch_var, font=font_style).pack(anchor='w')
-        tk.Label(results_group, textvariable=self.mse_var, font=font_style).pack(anchor='w')
+        tk.Label(results_group, textvariable=self.weight_var, font=font_style).pack(anchor='w')
+        tk.Label(results_group, textvariable=self.bias_var, font=font_style).pack(anchor='w', pady=(0, 10))
 
         tk.Frame(results_group, height=1, bg="#bdc3c7").pack(fill='x', pady=5)
 
-        tk.Label(results_group, textvariable=self.weight_var, font=font_style).pack(anchor='w')
-        tk.Label(results_group, textvariable=self.bias_var, font=font_style).pack(anchor='w', pady=(0, 10))
+        tk.Label(results_group, textvariable=self.mse_var, font=font_style).pack(anchor='w')
 
         self.start_button = tk.Button(
             self.control_panel,
